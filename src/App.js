@@ -4,6 +4,19 @@ import './App.css';
 export default function UserGuestList() {
   var [firstName, setFirstName] = useState('');
   var [lastName, setLastName] = useState('');
+  var [userName, setUserName] = useState('');
+
+  // function handleChange(event) {
+  //   setFirstName(event.target.value);
+  //   setLastName(event.target.value);
+
+  // <label>
+  //     <input
+  //     onclick={handleChange}
+  //       value={firstName}
+  //       placeholder="Enter your name"
+  //     />
+  //     </label>
 
   return (
     <div>
@@ -13,7 +26,7 @@ export default function UserGuestList() {
       <label>
         First Name:
         <input
-          // Controlled Component Top Text: onChange of form element
+          // Input first name
           onChange={(event) => {
             setFirstName(event.currentTarget.value);
           }}
@@ -24,7 +37,7 @@ export default function UserGuestList() {
       <label>
         Last Name:
         <input
-          // Controlled Component Top Text: onChange of form element
+          // Input last name
           onChange={(event) => {
             setLastName(event.currentTarget.value);
           }}
@@ -32,9 +45,16 @@ export default function UserGuestList() {
         />
       </label>
       <br />
+      <br />
       <button>Add Name</button>
       <br />
       <button>Remove Name</button>
+      <br />
+      <p>
+        <label onClick={userName}>
+          {firstName} {lastName}
+        </label>
+      </p>
       <br />
     </div>
   );
