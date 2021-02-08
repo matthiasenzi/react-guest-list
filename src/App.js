@@ -6,14 +6,13 @@ export default function UserGuestList() {
   var [lastName, setLastName] = useState('');
 
   var [userName, setUserName] = useState([
-    { firstName: 'hias', lastName: 'enzi' },
+    { id: 1, firstName: firstName, lastName: lastName },
   ]);
 
   return (
     <div>
       <h1>HIAS' REACT GUEST LIST</h1>
-      <p>This is a guest list showing names.</p>
-      <p>Enter the names below</p>
+      <p>Please enter the names below.</p>
       <label>
         First Name:
         <input
@@ -32,18 +31,36 @@ export default function UserGuestList() {
         />
       </label>
       <br />
+      <h2>Guest names</h2>
+      <ol>
+        {userName.map((userName) => (
+          <li key={`userName-${userName.id}`}>
+            {userName.firstName} {userName.lastName}
+          </li>
+        ))}
+      </ol>
+      <button
+        onClick={() => {
+          const lastId = userName.slice(-1)[0].id;
+          const nextId = lastId + 1;
+          const newUserName = {
+            id: nextId,
+            firstName: firstName,
+            lastName: lastName,
+          };
+          const newNames = [...userName, newUserName];
+
+          setUserName(newNames);
+        }}
+      >
+        Add Name
+      </button>
+
       <br />
-      <button>Add Name </button>
       <br />
-      <button>Remove Name</button>
+      <button>Remove name</button>
+      <button>Clear all</button>
       <br />
-      <h2>Attendees</h2>
-      <b>
-        {' '}
-        {userName[0].firstName} {userName[0].lastName}{' '}
-      </b>
-      <br />
-      {/* <button onClick={addName}>Click me</button> */}
     </div>
   );
 }
