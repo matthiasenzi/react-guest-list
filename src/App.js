@@ -4,19 +4,10 @@ import './App.css';
 export default function UserGuestList() {
   var [firstName, setFirstName] = useState('');
   var [lastName, setLastName] = useState('');
-  var [userName, setUserName] = useState('');
 
-  // function handleChange(event) {
-  //   setFirstName(event.target.value);
-  //   setLastName(event.target.value);
-
-  // <label>
-  //     <input
-  //     onclick={handleChange}
-  //       value={firstName}
-  //       placeholder="Enter your name"
-  //     />
-  //     </label>
+  var [userName, setUserName] = useState([
+    { firstName: 'hias', lastName: 'enzi' },
+  ]);
 
   return (
     <div>
@@ -26,36 +17,33 @@ export default function UserGuestList() {
       <label>
         First Name:
         <input
-          // Input first name
-          onChange={(event) => {
-            setFirstName(event.currentTarget.value);
-          }}
+          type="text"
           value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
         />
       </label>
       <br />
       <label>
         Last Name:
         <input
-          // Input last name
-          onChange={(event) => {
-            setLastName(event.currentTarget.value);
-          }}
+          type="text"
           value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
         />
       </label>
       <br />
       <br />
-      <button>Add Name</button>
+      <button>Add Name </button>
       <br />
       <button>Remove Name</button>
       <br />
-      <p>
-        <label onClick={userName}>
-          {firstName} {lastName}
-        </label>
-      </p>
+      <h2>Attendees</h2>
+      <b>
+        {' '}
+        {userName[0].firstName} {userName[0].lastName}{' '}
+      </b>
       <br />
+      {/* <button onClick={addName}>Click me</button> */}
     </div>
   );
 }
